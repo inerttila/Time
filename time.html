@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Time For My Boy Igli</title>
+  </head>
+  <style>
+    html,
+    body {
+      height: 100%;
+      overflow: hidden;
+      width: 100%;
+    }
+
+    body {
+      font-family: "Share Tech Mono", monospace;
+      background: #0f3854;
+      background: radial-gradient(ellipse at center, #8a1a0b 0%, #000000 70%);
+      background-size: 100%;
+    }
+
+    p {
+      margin: 0;
+      padding: 0;
+    }
+
+    #mars-clock {
+      color: #ffffff;
+      text-align: center;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      color: #daf6ff;
+      text-shadow: 0 0 20px #da3318, 0 0 20px #ff4a36;
+    }
+
+    #mars-clock .time {
+      letter-spacing: 0.05em;
+      font-size: 50px;
+      padding: 5px 0;
+    }
+
+    #mars-clock .date {
+      letter-spacing: 0.1em;
+      font-size: 24px;
+    }
+
+    @keyframes glow-effects {
+      0% {
+        box-shadow: inset 0px 0px 25px black, 1px 0px 5px 0px #da3318;
+      }
+      50% {
+        box-shadow: inset 0px 0px 25px black, 1px 0px 10px 0px #ff4a36;
+      }
+      100% {
+        box-shadow: inset 0px 0px 25px black, 1px 0px 5px 0px #8a1a0b;
+      }
+    }
+  </style>
+  <body>
+    <div id="mars-clock">
+      <p>What's the time on Skaitech?</p>
+      <p class="time"></p>
+      <p>And where the fuck is Igi ma boi?</p>
+    </div>
+  </body>
+  <script>
+    function h_to_hms(h) {
+      var x = h * 3600;
+      var hh = Math.floor(x / 3600);
+      if (hh < 10) hh = "0" + hh;
+      var y = x % 3600;
+      var mm = Math.floor(y / 60);
+      if (mm < 10) mm = "0" + mm;
+      var ss = Math.round(y % 60);
+      if (ss < 10) ss = "0" + ss;
+      return hh + ":" + mm + ":" + ss;
+    }
+
+    setInterval(function () {
+      var date = new Date();
+      var localTime = date.toLocaleTimeString("it-IT", {
+        timeZone: "Europe/Rome",
+      });
+      document.querySelector("p.time").innerText = localTime;
+    }, 100);
+  </script>
+</html>
